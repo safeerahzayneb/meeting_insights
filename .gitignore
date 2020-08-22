@@ -1,2 +1,4 @@
 venv/*
 uploads/*
+*.pyc
+meeting-insights/file_uploads/*
