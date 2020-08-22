@@ -23,9 +23,11 @@ def key_phrase_extraction(client, documents):
         if not response.is_error:
             print("Entire meeting text:\n")
             print(documents[0] + "\n")
-            print("\tKey Phrases:")
+            print("Key Phrases:")
+            key_phrases = ""
             for phrase in response.key_phrases:
-                print("\t\t", phrase)
+                key_phrases += phrase + ", "
+            print(key_phrases)
         else:
             print(response.id, response.error)
 
