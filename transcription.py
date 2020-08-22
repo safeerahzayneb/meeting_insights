@@ -58,7 +58,6 @@ def sample_recognize(storage_uri, content):
         #print("Transcript: {}".format(alternative.transcript))
         speakers = {}
         # Print the speaker_tag of each word
-
         for word in alternative.words:
             if not speakers.get(word.speaker_tag):
                 speakers[word.speaker_tag] = [word.word]
