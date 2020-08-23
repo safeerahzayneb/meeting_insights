@@ -25,12 +25,9 @@ def key_phrase_extraction(client, documents):
             print(documents[0] + "\n")
             print("Key Phrases:")
             key_phrases = ""
-            key_phrases_list = []
             for phrase in response.key_phrases:
                 key_phrases += phrase + ", "
-                key_phrases_list.append(phrase)
             print(key_phrases)
-            return key_phrases_list
         else:
             print(response.id, response.error)
 
@@ -55,9 +52,8 @@ for speaker in text_dict:
     for word in text_dict[speaker]:
         text += word + " "
 
-documents = [text]
+documents = [open("meeting_text.txt").read()]
 key_phrase_extraction(client, documents)
-
 
 from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
@@ -72,7 +68,7 @@ def read_article(file_name):
     sentences = []
 
     for sentence in article:
-        print(sentence)
+        # print(sentence)
         sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
     sentences.pop()
 
@@ -135,7 +131,7 @@ def generate_summary(file_name, top_n=5):
 
     # Step 4 - Sort the rank and pick top sentences
     ranked_sentence = sorted(((scores[i], s) for i, s in enumerate(sentences)), reverse=True)
-    print("Indexes of top ranked_sentence order are ", ranked_sentence)
+    # print("Indexes of top ranked_sentence order are ", ranked_sentence)
 
     for i in range(top_n):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
