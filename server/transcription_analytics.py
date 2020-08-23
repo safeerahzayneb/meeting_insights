@@ -2,6 +2,7 @@ from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from textanalytics_azure import *
 from transcription import *
+import re
 
 key = "66809a9c3def40138dcf988dd9b13db5"
 endpoint = "https://textkeywords.cognitiveservices.azure.com/"
@@ -36,9 +37,13 @@ for speaker in text_dict:
         text += word + " "
 
 meeting_content = [text]
-key_phrase_extraction(client, meeting_content)
-entity_recognition_example(client, meeting_content)
-entity_linking_example(client, meeting_content)
-sentiment_analysis_example(client, meeting_content)
+key_phrases = key_phrase_extraction(client, meeting_content)
+entity_recognition = entity_recognition_example(client, meeting_content)
+entity_linking = entity_linking_example(client, meeting_content)
+sentiment_analysis = sentiment_analysis_example(client, meeting_content)
 open("meeting_text.txt", "w").write(text)
 
+bullet_points = re.split("[,.]", text)
+text_summary = "Summary:\n"
+for line in bullet_points:
+    text_summary += "- " + line + "\n"
