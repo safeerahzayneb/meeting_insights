@@ -1,6 +1,11 @@
+@font-face{
+  font-family: 'Abel';
+  src: url('https://fonts.googleapis.com/css?family=Abel');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Abel', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +15,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+div.page {
+  /* background-color: #A2C6E8; */
+  background-image: linear-gradient(#7A9EBF,#ABC4DB, white);
 }
