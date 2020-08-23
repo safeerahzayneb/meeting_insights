@@ -26,7 +26,7 @@ class Analytics:
         # Test Data
         # vid_file_path='./sample2.mp4'
         vid_file_path = self.UPLOAD_DIRECTORY + '/sample2.mp4'
-        file_name = 'test.wav'
+        file_name = 'sample.wav'
         bucket_name = 'meeting_insights'
 
         convert_mp4_to_wav(vid_file_path)
@@ -51,3 +51,6 @@ class Analytics:
         # print(output)
         open("meeting_text.txt", "w").write(text)
         return output
+
+if __name__ == "__main__":
+    print(Analytics(".").meeting_analytics())
