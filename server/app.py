@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 CORS(app)
-UPLOAD_DIRECTORY = './file_uploads/'
+UPLOAD_DIRECTORY = 'server/file_uploads/'
 
 if not os.path.exists(UPLOAD_DIRECTORY):
     os.makedirs(UPLOAD_DIRECTORY)
