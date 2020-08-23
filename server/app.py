@@ -33,10 +33,15 @@ def upload_new_meeting():
     filename = secure_filename(file.filename)
     filepath = os.path.join(UPLOAD_DIRECTORY, filename)
     file.save(filepath)
-    resp = jsonify(meeting_id=meeting_id, status='uploaded')
+    summary, key_phrases, entity_recog, entity_linking, sentiment_analysis = Analytics(filepath).meeting_analytics()
+    resp = jsonify(meeting_id=meeting_id,
+                   status='uploaded',
+                   summary=summary,
+                   key_phrases=key_phrases,
+                   entity_recog=entity_recog,
+                   entity_linking=entity_linking,
+                   sentiment_analysis=sentiment_analysis)
     resp.headers['Access-Control-Allow-Origin'] = '*'
-    analytics = Analytics(filepath).meeting_analytics()
-
     return resp
 
 if __name__ == '__main__':
