@@ -52,7 +52,7 @@ def entity_recognition_example(client, meeting_content):
             out += "\tCategory: " + entity.category
             if entity.subcategory is not None:
                 out += "\tSubCategory: " + entity.subcategory
-            out += "\n\tConfidence Score:" + round(entity.confidence_score, 2)
+            out += "\n\tConfidence Score:" + str(round(entity.confidence_score, 2))
             # print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
                   # "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
         return out
