@@ -23,7 +23,7 @@ def upload_to_gs(file_name, bucket_name):
     return "gs://{}/{}".format(bucket_name, file_name)
 
 
-def sample_recognize(storage_uri):
+def sample_recognize(storage_uri, content):
     """
     Performs synchronous speech recognition on an audio file
 
@@ -55,7 +55,7 @@ def sample_recognize(storage_uri):
     for result in response.results:
         # First alternative has words tagged with speakers
         alternative = result.alternatives[0]
-        print("Transcript: {}".format(alternative.transcript))
+        #print("Transcript: {}".format(alternative.transcript))
         speakers = {}
         # Print the speaker_tag of each word
 
@@ -65,15 +65,7 @@ def sample_recognize(storage_uri):
             else:
                 speakers[word.speaker_tag].append(word.word)
 
-        print(speakers)
-
-
-
-# Test Data
-vid_file_path='./test/sample2.mp4'
-file_name='test.wav'
-bucket_name='meeting_insights'
-
-convert_mp4_to_wav(vid_file_path)
-gs_uri = upload_to_gs(file_name, bucket_name)
-sample_recognize(gs_uri)
+        #print(speakers)
+    
+    
+    return speakers
