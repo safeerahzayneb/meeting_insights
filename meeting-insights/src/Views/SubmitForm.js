@@ -2,6 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import "./w3.css";
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Breadcrumb from 'react-bootstrap/Breadcrumb'
+
+import Jumbotron from 'react-bootstrap/Jumbotron'
+
 async function uploadFile(file, meeting_name, date) {
     var formData = new FormData();
     
@@ -29,17 +36,22 @@ class SubmitForm extends React.Component {
 	render() {
         return (
             <div>
-<header class="w3-container w3-red">
-  <h1>Header</h1>
-</header>
-            <nav class="w3-bar w3-black">
-  <a href="#home" class="w3-button w3-bar-item">Home</a>
-  <a href="#band" class="w3-button w3-bar-item">Band</a>
-  <a href="#tour" class="w3-button w3-bar-item">Tour</a>
-  <a href="#contact" class="w3-button w3-bar-item">Contact</a>
-</nav>
+<Container>
+            <Row>
+            <Col>
+            <Breadcrumb>
+  <Breadcrumb.Item href="localhost:3000">Home</Breadcrumb.Item>
+  <Breadcrumb.Item active>Submit File</Breadcrumb.Item>
+</Breadcrumb>
 
-                <h2> test </h2>
+                <Jumbotron fluid>
+  <Container>
+    <h1>Meeting Insights</h1>
+    <p>
+      Making Quarantine efficiency = True efficency.
+    </p>
+  </Container>
+</Jumbotron>
                 <form onSubmit={this.submitFormHandler}>
                     <div>
                         Meeting Name: <input type="text" name="name" ref="name" />
@@ -56,6 +68,9 @@ class SubmitForm extends React.Component {
                 <div>
                     <Link to="/menu" className="btn btn-primary">view menu</Link>
                 </div>
+            </Col>
+            </Row>
+            </Container>
             </div>
         );
     }
