@@ -15,14 +15,14 @@ def authenticate_client():
 client = authenticate_client()
 
 
-def key_phrase_extraction(client, documents):
+def key_phrase_extraction(client, meeting_content):
     try:
 
-        response = client.extract_key_phrases(documents=documents)[0]
+        response = client.extract_key_phrases(documents=meeting_content)[0]
 
         if not response.is_error:
             print("Entire meeting text:\n")
-            print(documents[0] + "\n")
+            print(meeting_content[0] + "\n")
             print("Key Phrases:")
             key_phrases = ""
             for phrase in response.key_phrases:
@@ -35,9 +35,9 @@ def key_phrase_extraction(client, documents):
         print("Encountered exception. {}".format(err))
 
 
-def entity_recognition_example(client, documents):
+def entity_recognition_example(client, meeting_content):
     try:
-        result = client.recognize_entities(documents=documents)[0]
+        result = client.recognize_entities(documents=meeting_content)[0]
 
         print("Named Entities:\n")
         for entity in result.entities:
@@ -48,10 +48,9 @@ def entity_recognition_example(client, documents):
         print("Encountered exception. {}".format(err))
 
 
-def entity_linking_example(client, documents):
+def entity_linking_example(client, meeting_content):
     try:
-        documents = ["""distribution function function function action models can be traced. This freezing is common in the theory of discrete Choice models for the logistic distribution plays the same role and logistic regression as the normal distributions as in David regression. PDF of this distribution in the theory of electron properties in semiconductors and metals this derivative sets the relative weight of the various electron energy and their contributions to electron transport. high temperature I just think that we should arise assassinate distribution of an independent exponential distribution parameters in hydrology, the distribution of long duration River discharge and rainfall is often thought to be almost normal according to the central limit theorem."""]
-        result = client.recognize_linked_entities(documents=documents)[0]
+        result = client.recognize_linked_entities(documents=meeting_content)[0]
 
         print("Linked Entities:\n")
         for entity in result.entities:
@@ -66,10 +65,9 @@ def entity_linking_example(client, documents):
         print("Encountered exception. {}".format(err))
 
 
-def sentiment_analysis_example(client):
+def sentiment_analysis_example(client, meeting_content):
 
-    documents = ["distribution function function function action models can be traced. This freezing is common in the theory of discrete Choice models for the logistic distribution plays the same role and logistic regression as the normal distributions as in David regression. PDF of this distribution in the theory of electron properties in semiconductors and metals this derivative sets the relative weight of the various electron energy and their contributions to electron transport. high temperature I just think that we should arise assassinate distribution of an independent exponential distribution parameters in hydrology, the distribution of long duration River discharge and rainfall is often thought to be almost normal according to the central limit theorem."]
-    response = client.analyze_sentiment(documents = documents)[0]
+    response = client.analyze_sentiment(documents = meeting_content)[0]
     print("Meeting Sentiment: {}".format(response.sentiment))
     print("Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
         response.confidence_scores.positive,
@@ -77,22 +75,3 @@ def sentiment_analysis_example(client):
         response.confidence_scores.negative,
     ))
 
-
-# list of text to be processed
-# documents = ["My cat might need to see a veterinarian."]
-# f = open("text.txt")
-# documents = [f.read()]
-
-
-text_dict = {1: ['distribution', 'function', 'function', 'function', 'action', 'models', 'can', 'be', 'traced.', 'This', 'freezing', 'is', 'common', 'in', 'the', 'theory', 'of', 'discrete', 'Choice', 'models', 'for', 'the', 'logistic', 'distribution', 'plays', 'the', 'same', 'role', 'and', 'logistic', 'regression', 'as', 'the', 'normal', 'distributions', 'as', 'in', 'David', 'regression.', 'PDF', 'of', 'this', 'distribution', 'in', 'the', 'theory', 'of', 'electron', 'properties', 'in', 'semiconductors', 'and', 'metals', 'this', 'derivative', 'sets', 'the', 'relative', 'weight', 'of', 'the', 'various', 'electron', 'energy', 'and', 'their', 'contributions', 'to', 'electron', 'transport.', 'high', 'temperature', 'I', 'just', 'think', 'that', 'we', 'should', 'arise', 'assassinate', 'distribution', 'of', 'an', 'independent', 'exponential', 'distribution', 'parameters', 'in', 'hydrology,', 'the', 'distribution', 'of', 'long', 'duration', 'River', 'discharge', 'and', 'rainfall', 'is', 'often', 'thought', 'to', 'be', 'almost', 'normal', 'according', 'to', 'the', 'central', 'limit', 'theorem.']}
-text = ""
-for speaker in text_dict:
-    for word in text_dict[speaker]:
-        text += word + " "
-
-documents = [text]
-key_phrase_extraction(client, documents)
-entity_recognition_example(client, documents)
-entity_linking_example(client, documents)
-sentiment_analysis_example(client)
-open("meeting_text.txt", "w").write(text)
