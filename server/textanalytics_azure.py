@@ -22,17 +22,9 @@ def key_phrase_extraction(client, meeting_content):
         out = ""
 
         if not response.is_error:
-            out += "\nComplete meeting content:\n"
-            out += meeting_content[0] + "\n"
-            out += "\nKey Phrases:"
-
-            # print("Entire meeting text:\n")
-            # print(meeting_content[0] + "\n")
-            # print("Key Phrases:")
             key_phrases = ""
             for phrase in response.key_phrases:
                 key_phrases += phrase + ", "
-            # print(key_phrases)
             out += key_phrases
             return out
         else:
