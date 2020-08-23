@@ -1,0 +1,52 @@
+import React from 'react'
+import { Link } from 'react-router-dom';
+
+async function uploadFile(file, meeting_name, date) {
+    var formData = new FormData();
+    
+    formData.append('file', file);
+    formData.append('name', meeting_name);
+    formData.append('date', date);
+    
+    let response = await fetch('http://localhost:5000/upload',
+        {
+            method: 'POST',
+            body: formData,
+        });
+
+    let data = await response.json();
+    return data;
+}
+
+class SubmitForm extends React.Component {
+    submitFormHandler = event => {
+        event.preventDefault();
+        uploadFile(this.refs.file.files[0], this.refs.date.value, this.refs.name.value)
+        .then(data => console.log(data));
+    }
+
+	render() {
+        return (
+            <div>
+                <form onSubmit={this.submitFormHandler}>
+                    <div>
+                        Meeting Name: <input type="text" name="name" ref="name" />
+                    </div>
+                    <div>
+                        Meeting Date: <input type="text" name="date" ref="date" />
+                    </div>
+                    <div>
+                        <label>Upload Your File </label>
+                        <input type="file" name="file" ref="file" className="form-control"/>
+                    </div>
+                    <input type="submit" value="Submit" />
+                </form>
+                <div>
+                    <Link to="/menu" className="btn btn-primary">view menu</Link>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default SubmitForm;
