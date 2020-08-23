@@ -33,7 +33,7 @@ export default class Acordion extends React.Component {
         </Card>
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="1">
-            Summary
+            <b>Summary</b>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
             <Card.Body>{this.state.data["summary"]}</Card.Body>
@@ -41,7 +41,7 @@ export default class Acordion extends React.Component {
         </Card>
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="2">
-            Key Phrases
+            <b>Key Phrases</b>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="2">
             <Card.Body>{this.state.data["key_phrases"]}</Card.Body>
@@ -49,7 +49,7 @@ export default class Acordion extends React.Component {
         </Card>
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="3">
-            Sentiment Analysis
+            <b>Sentiment Analysis</b>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="3">
             <Card.Body>{this.state.data["sentiment_analysis"]}</Card.Body>
@@ -57,7 +57,7 @@ export default class Acordion extends React.Component {
         </Card>
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="4">
-            Entity Recognition
+            <b>Entity Recognition</b>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="4">
             <Card.Body>
@@ -67,7 +67,7 @@ export default class Acordion extends React.Component {
         </Card>
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="5">
-            Entity Linking
+            <b>Entity Linking</b>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="5">
             <Card.Body>
