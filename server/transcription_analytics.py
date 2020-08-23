@@ -5,8 +5,8 @@ from transcription import *
 
 
 class Analytics:
-    def __init__(self, UPLOAD_DIRECTORY):
-        self.UPLOAD_DIRECTORY = UPLOAD_DIRECTORY
+    def __init__(self, file_path:
+        self.file_path = file_path
         self.key = "66809a9c3def40138dcf988dd9b13db5"
         self.endpoint = "https://textkeywords.cognitiveservices.azure.com/"
 
@@ -25,8 +25,8 @@ class Analytics:
         content = {}
         # Test Data
         # vid_file_path='./sample2.mp4'
-        vid_file_path = self.UPLOAD_DIRECTORY + '/sample2.mp4'
-        file_name = 'sample.wav'
+        vid_file_path = self.file_path
+        file_name = 'test.wav'
         bucket_name = 'meeting_insights'
 
         convert_mp4_to_wav(vid_file_path)
@@ -52,5 +52,6 @@ class Analytics:
         open("meeting_text.txt", "w").write(text)
         return output
 
-if __name__ == "__main__":
+
+if name == "main":
     print(Analytics(".").meeting_analytics())
