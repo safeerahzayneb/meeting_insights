@@ -32,7 +32,9 @@ def upload_new_meeting():
     filename = secure_filename(file.filename)
     filepath = os.path.join(UPLOAD_DIRECTORY, filename)
     file.save(filepath)
-    return jsonify(meeting_id=meeting_id, status='uploaded')
+    resp = jsonify(meeting_id=meeting_id, status='uploaded')
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 if __name__ == '__main__':
     app.run('0.0.0.0', 5000, debug=True)
