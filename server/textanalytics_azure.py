@@ -22,7 +22,7 @@ def key_phrase_extraction(client, meeting_content):
         out = ""
 
         if not response.is_error:
-            out += "Complete meeting content:\n"
+            out += "\nComplete meeting content:\n"
             out += meeting_content[0] + "\n"
             out += "\nKey Phrases:"
 
@@ -45,7 +45,7 @@ def key_phrase_extraction(client, meeting_content):
 def entity_recognition(client, meeting_content):
     try:
         result = client.recognize_entities(documents=meeting_content)[0]
-        out = ""
+        out = "\nNamed Entities:\n"
         # print("Named Entities:\n")
         for entity in result.entities:
             out += "\tText: " + entity.text
