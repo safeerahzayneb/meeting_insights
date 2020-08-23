@@ -11,15 +11,27 @@ import Accordion from './Accordion'
 export default class MenuViewer extends React.Component {
   render() {
     return (
-      <Container>
+      <Container
+        style={{
+          minHeight: 678,
+          width: 1300,
+          paddingBottom: 50
+        }}
+      >
         <Row
           style={{
             height: 150,
             alignItems: 'center',
             justifyContent: 'center',
+            maxWidth: 1800,
+            marginRight: 0,
+            marginLeft: 0,
+            marginBottom: 20,
+            color: 'white'
           }}
         >
-          <h1>View Meetings</h1>
+          <h1>
+            View Meetings</h1>
         </Row>
         <Row
           style={{

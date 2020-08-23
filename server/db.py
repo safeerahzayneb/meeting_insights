@@ -22,7 +22,7 @@ def add_data(id, response):
 def get_data():
     conn = sqlite3.connect('requests.db')
     c = conn.cursor()
-    c.execute('SELECT response FROM requests ORDER BY id DESC')
+    c.execute('SELECT response FROM requests ORDER BY RANDOM()')
     return c.fetchone()
 
 def deel():
