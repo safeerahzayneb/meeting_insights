@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -37,19 +37,19 @@ export default class MenuViewer extends React.Component {
                 <Col sm={4}>
                   <ListGroup>
                     <ListGroup.Item action href="#meeting1">
-                      Meeting 1
+                      Meeting 1: Planning
                     </ListGroup.Item>
                     <ListGroup.Item action href="#meeting2">
-                      Meeting 2
+                      Meeting 2: Ideation
                     </ListGroup.Item>
                     <ListGroup.Item action href="#meeting3">
-                      Meeting 3
+                      Meeting 3: Project Meeting
                     </ListGroup.Item>
                     <ListGroup.Item action href="#meeting4">
-                      Meeting 4
+                      Meeting 4: Check-in
                     </ListGroup.Item>
                     <ListGroup.Item action href="#meeting5">
-                      Meeting 5
+                      Meeting 5: Review
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>

@@ -44,6 +44,7 @@ def upload_new_meeting():
     resp_dict = {
         "meeting_id": str(meeting_id),
         "date": str(datetime.datetime.now()),
+        "attendees": "Alex, Jason, Safeerah, Jennifer",
         "summary": summary,
         "key_phrases": key_phrases,
         "entity_recog": entity_recog,
