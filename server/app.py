@@ -7,7 +7,7 @@ from werkzeug.utils import secure_filename
 # from transcription import generate_transcript
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 UPLOAD_DIRECTORY = 'server/file_uploads/'
 
 if not os.path.exists(UPLOAD_DIRECTORY):
