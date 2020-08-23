@@ -2,7 +2,7 @@ from nltk.corpus import stopwords
 from nltk.cluster.util import cosine_distance
 import numpy as np
 import networkx as nx
-
+import re
 
 def read_article(file_name):
     file = open(file_name, "r")
@@ -80,8 +80,14 @@ def generate_summary(file_name, top_n=5):
         summarize_text.append(" ".join(ranked_sentence[i][1]))
 
     # Step 5 - Offcourse, output the summarize texr
-    print("Summarize Text: \n", ". ".join(summarize_text))
-
+    summary = ". ".join(summarize_text)
+    print(summary)
+    return summary
 
 # let's begin
-generate_summary("meeting_text.txt", 2)
+summary = generate_summary("meeting_text.txt", 2)
+
+bullet_points = re.split("[.,]", summary)
+
+for p in bullet_points:
+    print("- " + p)

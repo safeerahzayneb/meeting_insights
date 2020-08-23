@@ -3,7 +3,7 @@ endpoint = "https://textkeywords.cognitiveservices.azure.com/"
 
 from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
-
+import re
 
 def authenticate_client():
     ta_credential = AzureKeyCredential(key)
@@ -84,7 +84,13 @@ for speaker in text_dict:
         text += word + " "
 
 documents = [text]
-key_phrase_extraction(client, documents)
+key_phrases = key_phrase_extraction(client, documents)
 entity_recognition_example(client, documents)
 entity_linking_example(client, documents)
 open("meeting_text.txt", "w").write(text)
+
+print("All text from meeting in bullet points:\n")
+bullet_points = re.split("[.,]", text)
+
+for p in bullet_points:
+    print("- " + p)
