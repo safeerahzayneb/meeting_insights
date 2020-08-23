@@ -1,2 +1,4 @@
 venv/*
 uploads/*
+*.pyc
+*/file_uploads/*
