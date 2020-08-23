@@ -3,7 +3,7 @@ from google.cloud.speech_v1p1beta1 import enums
 from google.cloud import storage
 import moviepy.editor as mp 
 
-TEMP_FILE_PATH = '../test/sample.mp4'
+TEMP_FILE_PATH = './sample.wav'  
 
 # Insert Local Video File Path  
 def convert_mp4_to_wav(vid_file_path):
