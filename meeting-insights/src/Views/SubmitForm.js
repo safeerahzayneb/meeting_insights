@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import "./w3.css";
 
 async function uploadFile(file, meeting_name, date) {
     var formData = new FormData();
@@ -28,6 +29,17 @@ class SubmitForm extends React.Component {
 	render() {
         return (
             <div>
+<header class="w3-container w3-red">
+  <h1>Header</h1>
+</header>
+            <nav class="w3-bar w3-black">
+  <a href="#home" class="w3-button w3-bar-item">Home</a>
+  <a href="#band" class="w3-button w3-bar-item">Band</a>
+  <a href="#tour" class="w3-button w3-bar-item">Tour</a>
+  <a href="#contact" class="w3-button w3-bar-item">Contact</a>
+</nav>
+
+                <h2> test </h2>
                 <form onSubmit={this.submitFormHandler}>
                     <div>
                         Meeting Name: <input type="text" name="name" ref="name" />
