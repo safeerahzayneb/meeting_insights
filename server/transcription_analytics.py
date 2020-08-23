@@ -47,3 +47,8 @@ bullet_points = re.split("[,.]", text)
 text_summary = "Summary:\n"
 for line in bullet_points:
     text_summary += "- " + line + "\n"
+
+print("key phrases", key_phrases)
+print("entities", entity_recognition)
+print("entities links", entity_linking)
+print("sentiment", sentiment_analysis)

@@ -71,16 +71,18 @@ def entity_linking_example(client, meeting_content):
     try:
         result = client.recognize_linked_entities(documents=meeting_content)[0]
         out = ""
-        print("Linked Entities:\n")
+        out += "Linked Entities:\n"
+        # print("Linked Entities:\n")
         for entity in result.entities:
             out += "\tName: " + entity.name + "\tId: " + entity.data_source_entity_id + "\tUrl: " + entity.url + \
                   "\n\tData Source: " + entity.data_source
             # print("\tName: ", entity.name, "\tId: ", entity.data_source_entity_id, "\tUrl: ", entity.url,
             #       "\n\tData Source: ", entity.data_source)
+            out += "\n\tMatches:"
             # print("\tMatches:")
             for match in entity.matches:
-                out += "\t\tText:" + match.text
-                out += "\t\tConfidence Score: {0:.2f}".format(match.confidence_score)
+                out += "\n\t\tText:" + match.text
+                out += "\n\t\tConfidence Score: {0:.2f}".format(match.confidence_score)
                 # print("\t\tText:", match.text)
                 # print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score))
         return out
