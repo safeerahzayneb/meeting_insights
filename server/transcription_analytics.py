@@ -44,6 +44,7 @@ entity_recog_out = entity_recognition(client, meeting_content)
 entity_linking_out = entity_linking(client, meeting_content)
 sentiment_analysis_out = sentiment_analysis(client, meeting_content)
 
-print(key_phrases_out + "\n" + entity_recog_out + "\n" + entity_linking_out + "\n" + sentiment_analysis_out + "\n")
+output = key_phrases_out + "\n" + entity_recog_out + "\n" + entity_linking_out + "\n" + sentiment_analysis_out + "\n"
+print(output)
 open("meeting_text.txt", "w").write(text)
 
