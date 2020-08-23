@@ -4,6 +4,7 @@ import uuid
 from flask import Flask, url_for, request, jsonify
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
+from transcription_analytics import Analytics
 # from transcription import generate_transcript
 
 app = Flask(__name__)
@@ -34,6 +35,8 @@ def upload_new_meeting():
     file.save(filepath)
     resp = jsonify(meeting_id=meeting_id, status='uploaded')
     resp.headers['Access-Control-Allow-Origin'] = '*'
+    analytics = Analytics(filepath).meeting_analytics()
+
     return resp
 
 if __name__ == '__main__':
