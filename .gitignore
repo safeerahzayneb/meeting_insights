@@ -1,4 +1,6 @@
 venv/*
 uploads/*
 *.pyc
-*/file_uploads/*
+*.wav
+*.mp4
+*.txt
