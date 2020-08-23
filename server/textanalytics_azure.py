@@ -22,9 +22,9 @@ def key_phrase_extraction(client, meeting_content):
         out = ""
 
         if not response.is_error:
-            out += "Entire meeting text:\n"
+            out += "Complete meeting content:\n"
             out += meeting_content[0] + "\n"
-            out += "Key Phrases:"
+            out += "\nKey Phrases:"
 
             # print("Entire meeting text:\n")
             # print(meeting_content[0] + "\n")
@@ -42,7 +42,7 @@ def key_phrase_extraction(client, meeting_content):
         print("Encountered exception. {}".format(err))
 
 
-def entity_recognition_example(client, meeting_content):
+def entity_recognition(client, meeting_content):
     try:
         result = client.recognize_entities(documents=meeting_content)[0]
         out = ""
@@ -67,7 +67,7 @@ def entity_recognition_example(client, meeting_content):
         print("Encountered exception. {}".format(err))
 
 
-def entity_linking_example(client, meeting_content):
+def entity_linking(client, meeting_content):
     try:
         result = client.recognize_linked_entities(documents=meeting_content)[0]
         out = ""
@@ -83,6 +83,7 @@ def entity_linking_example(client, meeting_content):
             for match in entity.matches:
                 out += "\n\t\tText:" + match.text
                 out += "\n\t\tConfidence Score: {0:.2f}".format(match.confidence_score)
+                out += "\n"
                 # print("\t\tText:", match.text)
                 # print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score))
         return out
@@ -90,11 +91,11 @@ def entity_linking_example(client, meeting_content):
         print("Encountered exception. {}".format(err))
 
 
-def sentiment_analysis_example(client, meeting_content):
+def sentiment_analysis(client, meeting_content):
     out = ""
     response = client.analyze_sentiment(documents = meeting_content)[0]
     out += "Meeting Sentiment: {}".format(response.sentiment)
-    out += "Overall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
+    out += "\n\tOverall scores: positive={0:.2f}; neutral={1:.2f}; negative={2:.2f} \n".format(
         response.confidence_scores.positive,
         response.confidence_scores.neutral,
         response.confidence_scores.negative,
