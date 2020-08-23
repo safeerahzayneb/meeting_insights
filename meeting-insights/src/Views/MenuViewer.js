@@ -30,8 +30,7 @@ export default class MenuViewer extends React.Component {
             color: 'white'
           }}
         >
-          <h1>
-            View Meetings</h1>
+          <h1>Analyze Your Meetings</h1>
         </Row>
         <Row
           style={{
