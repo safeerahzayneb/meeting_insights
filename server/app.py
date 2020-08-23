@@ -35,7 +35,7 @@ def upload_new_meeting():
     file.save(filepath)
     resp = jsonify(meeting_id=meeting_id, status='uploaded')
     resp.headers['Access-Control-Allow-Origin'] = '*'
-    analytics = Analytics(UPLOAD_DIRECTORY).meeting_analytics()
+    analytics = Analytics(filepath).meeting_analytics()
 
     return resp
 
